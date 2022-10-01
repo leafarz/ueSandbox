@@ -11,8 +11,10 @@
 #include "Misc/PackageName.h"
 #include "Templates/SubclassOf.h"
 
-void UReflectionHelper::GetBlueprintsOfClass(TArray<TAssetSubclassOf<UObject>>& Subclasses, TSubclassOf<UObject> Base,
-                                            bool bAllowAbstract, FString const& Path)
+void UReflectionHelper::GetBlueprintsOfClass(TSubclassOf<UObject> Base,
+	FString Path,
+	TArray<TAssetSubclassOf<UObject>>& Subclasses,
+	const TArray<FString>& OtherContentPaths)
 {
 	// Load the asset registry module
 	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>(FName("AssetRegistry"));
@@ -23,6 +25,23 @@ void UReflectionHelper::GetBlueprintsOfClass(TArray<TAssetSubclassOf<UObject>>& 
 	// or to register a callback with the asset registry to be notified of when it's finished populating.
 	TArray<FString> ContentPaths;
 	ContentPaths.Add(TEXT("/Game"));
+
+	for (const auto& ContentPath : OtherContentPaths)
+	{
+		FString ParsedContentPath = ContentPath.TrimStartAndEnd();
+		if (ParsedContentPath.IsEmpty())
+		{
+			continue;
+		}
+
+		if (!ParsedContentPath.StartsWith("/"))
+		{
+			ParsedContentPath = "/" + ParsedContentPath;
+		}
+
+		ContentPaths.AddUnique(ParsedContentPath);
+	}
+
 	AssetRegistry.ScanPathsSynchronous(ContentPaths);
 
 	FName BaseClassName = Base->GetFName();
@@ -40,7 +59,7 @@ void UReflectionHelper::GetBlueprintsOfClass(TArray<TAssetSubclassOf<UObject>>& 
 	FARFilter Filter;
 	Filter.ClassNames.Add(UBlueprint::StaticClass()->GetFName());
 	Filter.bRecursiveClasses = true;
-	if(!Path.IsEmpty())
+	if (!Path.IsEmpty())
 	{
 		Filter.PackagePaths.Add(*Path);
 	}
@@ -50,17 +69,20 @@ void UReflectionHelper::GetBlueprintsOfClass(TArray<TAssetSubclassOf<UObject>>& 
 	AssetRegistry.GetAssets(Filter, AssetList);
 
 	// Iterate over retrieved blueprint assets
-	for(auto const& Asset : AssetList)
+	for (auto const& Asset : AssetList)
 	{
 		// Get the the class this blueprint generates (this is stored as a full path)
-		if(auto GeneratedClassPathPtr = Asset.TagsAndValues.Find(TEXT("GeneratedClass")))
+		FAssetTagValueRef GeneratedClassPathPtr = Asset.TagsAndValues.FindTag(TEXT("GeneratedClass"));
+		if (GeneratedClassPathPtr.IsSet())
 		{
+			FString GetGeneratedClassPathStr = GeneratedClassPathPtr.AsString();
+			
 			// Convert path to just the name part
-			const FString ClassObjectPath = FPackageName::ExportTextPathToObjectPath(*GeneratedClassPathPtr);
+			const FString ClassObjectPath = FPackageName::ExportTextPathToObjectPath(*GetGeneratedClassPathStr);
 			const FString ClassName = FPackageName::ObjectPathToObjectName(ClassObjectPath);
 
 			// Check if this class is in the derived set
-			if(!DerivedNames.Contains(*ClassName))
+			if (!DerivedNames.Contains(*ClassName))
 			{
 				continue;
 			}

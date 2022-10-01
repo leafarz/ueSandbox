@@ -17,8 +17,8 @@ class UESANDBOX_API UReflectionHelper : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
-    UFUNCTION(BlueprintCallable, Category="ReflectionHelper")
-        static void GetBlueprintsOfClass(TArray<TAssetSubclassOf<UObject>>& Subclasses, TSubclassOf<UObject> Base, bool bAllowAbstract, FString const& Path);
+    UFUNCTION(BlueprintCallable, Category="ReflectionHelper", meta = (AutoCreateRefTerm = "OtherContentPaths"))
+    static void GetBlueprintsOfClass(TSubclassOf<UObject> Base, FString Path, TArray<TAssetSubclassOf<UObject>>& Subclasses, const TArray<FString>& OtherContentPaths);
 
     UFUNCTION(BlueprintCallable, BlueprintPure)
         static FString GetActorClassPath(AActor* Actor);
