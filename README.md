@@ -22,9 +22,9 @@ Programming and UE stuff sandbox
 |:-:|:-:|:-:|
 |Pulse Shader|Snow Trail|Toon / Cel shading|
 
-|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_06.png" style="width:400px;"/>|
-|:-:|
-|Convolution Kernels (Sharpen)|
+|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_06.png" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_08.gif" style="width:400px;"/>|
+|:-:|:-:|
+|Convolution Kernels (Sharpen)|Wet Surface Shader|
 
 </center>
 
