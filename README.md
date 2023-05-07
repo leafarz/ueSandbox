@@ -20,11 +20,11 @@ Programming and UE stuff sandbox
 
 |<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_04.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_01.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_05.png" style="width:400px;"/>|
 |:-:|:-:|:-:|
-|Pulse Shader|Snow Trail|Toon / Cel shading|
+|Pulse Effect Material|Snow Trail|Toon / Cel shading|
 
-|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_06.png" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_08.gif" style="width:400px;"/>|
-|:-:|:-:|
-|Convolution Kernels (Sharpen)|Wet Surface Shader|
+|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_06.png" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_08.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_09.jpg" style="width:400px;"/>|
+|:-:|:-:|:-:|
+|Convolution Kernels (Sharpen)|Wet Surface Material|Random Splats|
 
 </center>
 
