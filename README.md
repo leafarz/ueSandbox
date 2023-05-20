@@ -14,9 +14,9 @@ Programming and UE stuff sandbox
 
 <center>
 
-|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_06.png" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_07.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_02.gif" style="width:400px;"/>|
+|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_06.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_07.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_02.gif" style="width:400px;"/>|
 |:-:|:-:|:-:|
-|Convolution Kernels (Sharpen)|Disintegration|Distance Field|
+|Convolution Kernels|Disintegration|Distance Field|
 
 |<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_03.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_04.gif" style="width:400px;"/>|<img src="https://media.githubusercontent.com/media/leafarz/resources/master/ueSandbox_09.jpg" style="width:400px;"/>|
 |:-:|:-:|:-:|
